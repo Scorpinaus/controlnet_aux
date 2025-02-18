@@ -5,7 +5,7 @@ from PIL import Image
 from ..util import HWC3, resize_image
 
 class CannyDetector:
-    def __call__(self, input_image=None, low_threshold=100, high_threshold=200, detect_resolution=512, image_resolution=512, output_type=None, **kwargs):
+    def __call__(self, input_image=None, low_threshold=100, high_threshold=200, resolution = None, detect_resolution=512, image_resolution=512, output_type=None, **kwargs):
         if "img" in kwargs:
             warnings.warn("img is deprecated, please use `input_image=...` instead.", DeprecationWarning)
             input_image = kwargs.pop("img")
@@ -20,6 +20,12 @@ class CannyDetector:
             output_type = output_type or "np"
         
         input_image = HWC3(input_image)
+
+        #When single resolution provided, overrides default detect and image_resolution
+        if resolution is not None:
+            detect_resolution = resolution
+            image_resolution = resolution
+
         input_image = resize_image(input_image, detect_resolution)
 
         detected_map = cv2.Canny(input_image, low_threshold, high_threshold)

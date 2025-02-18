@@ -190,7 +190,7 @@ setup(
     author_email="patrick@huggingface.co",
     url="https://github.com/patrickvonplaten/controlnet_aux",
     package_dir={"": "src"},
-    packages=find_packages("src"),
+    packages=find_packages(where="src"),
     include_package_data=True,
     python_requires=">=3.7.0",
     install_requires=install_requires,

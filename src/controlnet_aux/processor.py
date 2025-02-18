@@ -70,7 +70,11 @@ MODEL_PARAMS = {
     'lineart_realistic': {'coarse': False},
     'lineart_coarse': {'coarse': True},
     'lineart_anime': {},
-    'canny': {},
+    'canny': {
+        'low_threshold':100,
+        'high_threshold': 200,
+        'resolution': 512
+    },
     'shuffle': {},
     'depth_zoe': {},
     'depth_leres': {'boost': False},
