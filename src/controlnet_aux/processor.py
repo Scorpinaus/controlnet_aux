@@ -11,7 +11,7 @@ from controlnet_aux import (CannyDetector, ContentShuffleDetector, HEDdetector,
                             LeresDetector, LineartAnimeDetector,
                             LineartDetector, MediapipeFaceDetector,
                             MidasDetector, MLSDdetector, NormalBaeDetector,
-                            OpenposeDetector, PidiNetDetector, ZoeDetector,
+                            OpenposeDetector, PidiNetDetector, ZoeDetector, TilingDetector,
                             DWposeDetector)
 
 LOGGER = logging.getLogger(__name__)
@@ -46,6 +46,7 @@ MODELS = {
     'shuffle': {'class': ContentShuffleDetector, 'checkpoint': False},
     'mediapipe_face': {'class': MediapipeFaceDetector, 'checkpoint': False},
     'canny': {'class': CannyDetector, 'checkpoint': False},
+    'tiling': {'class':TilingDetector, 'checkpoint':False},
 }
 
 
@@ -80,6 +81,7 @@ MODEL_PARAMS = {
     'depth_leres': {'boost': False},
     'depth_leres++': {'boost': True},
     'mediapipe_face': {},
+    'tiling': {'resize':False},
 }
 
 CHOICES = f"Choices for the processor are {list(MODELS.keys())}"
